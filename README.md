@@ -11,4 +11,4 @@
 - [Bailey Bowling]() - Manager
 ---
 ### Demo
-(![presentationGif](https://github.com/user-attachments/assets/b6d6eb78-0bac-40a6-9d5a-ad4f98ab31dc))
+![presentationGif](https://github.com/user-attachments/assets/b6d6eb78-0bac-40a6-9d5a-ad4f98ab31dc)
