@@ -6,9 +6,9 @@
 
 **Meet the Team**
 - ![Rushil-Profile]() Rushil Jadia: Developer
-- ![Kelsey-Profile]()Kelsey Phelps: Designer 
-- ![Chris-Profile]()Chris DeMarchi: Tester
-- ![Bailey-Profile]()Bailey Bowling: Manager
+- ![Kelsey-Profile]() Kelsey Phelps: Designer 
+- ![Chris-Profile]() Chris DeMarchi: Tester
+- ![Bailey-Profile]() Bailey Bowling: Manager
 ---
 ### Demo
 ![](my_video.mov)
