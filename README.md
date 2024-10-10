@@ -13,4 +13,4 @@
 ### Demo
 ![presentationGif](https://github.com/user-attachments/assets/b6d6eb78-0bac-40a6-9d5a-ad4f98ab31dc)
 
-> Users can expect to be able to manage and search for their medications using the search bar, track whether or not they have taken their medication, get notified about adverse reactions or potential side effects, ask questions in the discussion forum, manage their profile, and view their calendar for more information about refills and medication schedules.
+> Users wil land at our Home page where they can view our About section, login to an existing account or signup for a new one. Users can expect to be able to manage and search for their medications using the search bar, track whether or not they have taken their medication, get notified about adverse reactions or potential side effects, ask questions in the discussion forum, manage their profile, and view their calendar for more information about refills and medication schedules.
