@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Container, Form, Row, Modal } from "react-bootstrap";
+import { Button, Col, Container, Form, Row, Modal, Image } from "react-bootstrap";
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -28,8 +28,13 @@ const Register = () => {
   return (
     <Container fluid className="d-flex justify-content-center align-items-center min-vh-100">
       <Row className="w-100 justify-content-center">
-        <Col md={6} lg={4}>
-          <h2 className="text-center mb-4">Register</h2>
+        <Col md={6} lg={4} className="text-center">
+          {/* Insert Image Here */}
+          <Image src="BGE\frontend\src\components\file-GADgX4JRlXc1erMRpVTucNZB.png" alt="Account creation image" fluid className="mb-4" />
+
+          {/* Create Account Title */}
+          <h2 className="mb-4">Create Account</h2>
+
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formName" className="mb-3">
               <Form.Label>Name</Form.Label>
@@ -71,15 +76,27 @@ const Register = () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="formTerms" className="mb-3">
+            {/* Checkbox for Terms & Conditions */}
+            <Form.Group controlId="formTerms" className="mb-4">
               <Form.Check
                 type="checkbox"
-                label={<span>I accept the <span onClick={handleShowTerms} style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}>Terms & Conditions</span></span>}
+                label={
+                  <span>
+                    I accept the{" "}
+                    <span
+                      onClick={handleShowTerms}
+                      style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}
+                    >
+                      Terms & Conditions
+                    </span>
+                  </span>
+                }
                 checked={acceptedTerms}
                 onChange={(e) => setAcceptedTerms(e.target.checked)}
               />
             </Form.Group>
 
+            {/* Sign Up Button */}
             <Button variant="primary" type="submit" className="w-100">
               Sign Up
             </Button>
@@ -93,10 +110,9 @@ const Register = () => {
           <Modal.Title>Terms & Conditions</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* add terms and conditions */}
-          <p>Welcome to our terms and conditions!</p>
+          {/* Add terms and conditions */}
+          <p>Welcome to our terms and conditions! Here you can provide detailed terms and conditions for the user to read.</p>
           <p>Make sure to outline all legal responsibilities, privacy policies, and other necessary user agreements.</p>
-          {/* Add more content as needed */}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseTerms}>
