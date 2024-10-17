@@ -93,8 +93,8 @@ const Register = () => {
           <Modal.Title>Terms & Conditions</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* Here you can add your terms and conditions */}
-          <p>Welcome to our terms and conditions! Here you can provide detailed terms and conditions for the user to read.</p>
+          {/* add terms and conditions */}
+          <p>Welcome to our terms and conditions!</p>
           <p>Make sure to outline all legal responsibilities, privacy policies, and other necessary user agreements.</p>
           {/* Add more content as needed */}
         </Modal.Body>
