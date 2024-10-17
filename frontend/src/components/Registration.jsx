@@ -30,7 +30,7 @@ const Register = () => {
       <Row className="w-100 justify-content-center">
         <Col md={6} lg={4} className="text-center">
           {/* Insert Image Here */}
-          <Image src="BGE\frontend\src\components\file-GADgX4JRlXc1erMRpVTucNZB.png" alt="Account creation image" fluid className="mb-4" />
+          <Image src="/file-GADgX4JRlXc1erMRpVTucNZB.png" alt="Account creation image" fluid className="mb-4" />
 
           {/* Create Account Title */}
           <h2 className="mb-4">Create Account</h2>
