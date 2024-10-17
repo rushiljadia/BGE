@@ -1,21 +1,29 @@
-import React, {useState} from "react";
-import {Button, Col, Container, Form, Row} from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Col, Container, Form, Row, Modal } from "react-bootstrap";
 
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // add registration logic here
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
+    if (!acceptedTerms) {
+      alert("You must accept the terms and conditions!");
+      return;
+    }
     // further validation or API call
   };
+
+  const handleShowTerms = () => setShowTerms(true);
+  const handleCloseTerms = () => setShowTerms(false);
 
   return (
     <Container fluid className="d-flex justify-content-center align-items-center min-vh-100">
@@ -63,12 +71,39 @@ const Register = () => {
               />
             </Form.Group>
 
+            <Form.Group controlId="formTerms" className="mb-3">
+              <Form.Check
+                type="checkbox"
+                label={<span>I accept the <span onClick={handleShowTerms} style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}>Terms & Conditions</span></span>}
+                checked={acceptedTerms}
+                onChange={(e) => setAcceptedTerms(e.target.checked)}
+              />
+            </Form.Group>
+
             <Button variant="primary" type="submit" className="w-100">
-              Register
+              Sign Up
             </Button>
           </Form>
         </Col>
       </Row>
+
+      {/* Modal for Terms & Conditions */}
+      <Modal show={showTerms} onHide={handleCloseTerms}>
+        <Modal.Header closeButton>
+          <Modal.Title>Terms & Conditions</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {/* Here you can add your terms and conditions */}
+          <p>Welcome to our terms and conditions! Here you can provide detailed terms and conditions for the user to read.</p>
+          <p>Make sure to outline all legal responsibilities, privacy policies, and other necessary user agreements.</p>
+          {/* Add more content as needed */}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseTerms}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   );
 };
