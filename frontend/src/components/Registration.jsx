@@ -17,7 +17,6 @@ const Register = () => {
     }
     if (!acceptedTerms) {
       alert("You must accept the terms and conditions!");
-      return;
     }
     // further validation or API call
   };
@@ -30,7 +29,7 @@ const Register = () => {
       <Row className="w-100 justify-content-center">
         <Col md={6} lg={4} className="text-center">
           {/* Insert Image Here */}
-          <Image src="/file-GADgX4JRlXc1erMRpVTucNZB.png" alt="Account creation image" fluid className="mb-4" />
+          <Image src="../assets/logo-main.png" alt="Account creation image" fluid className="mb-4" />
 
           {/* Create Account Title */}
           <h2 className="mb-4">Create Account</h2>
