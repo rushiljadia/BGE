@@ -29,8 +29,8 @@ const Footer = () => {
           {/* Contact Info */}
           <Col md={4}>
             <h5>Contact Us</h5>
-            <p>Email: contact@bge.com</p>
-            <p>Phone: +123 456 7890</p>
+            <p>Email: <a href="mailto:contact@bge.com">contact@bge.com</a></p>
+            <p>Phone: <a href="tel:123 456 7890">+123 456 7890</a></p>
           </Col>
         </Row>
         <Row className="mt-3">
