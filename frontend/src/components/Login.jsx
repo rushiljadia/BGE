@@ -38,6 +38,9 @@ const Login = () => {
             <Button variant="primary" type="submit" className="w-100">
               Login
             </Button>
+            <Button variant="link" href="/registration" className="text-center w-100 mt-2">
+              Make an account
+            </Button>
           </Form>
         </Col>
       </Row>
