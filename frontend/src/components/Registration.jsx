@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row, Modal, Image } from "react-bootstrap";
+import axios from "axios";
 
 const Register = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [username, setUserName] = useState('')
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [birthday, setBirthday] = useState('')
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Basic Validations
+    // Check to see if password do or do not match
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
@@ -18,7 +25,26 @@ const Register = () => {
     if (!acceptedTerms) {
       alert("You must accept the terms and conditions!");
     }
-    // further validation or API call
+
+    // Prepare user data for API call
+    const userData = {
+      username: username,
+      password: password,
+      firstName: firstName,
+      lastName: lastName,
+      birthday: birthday,
+    }
+
+    try {
+      // Send POST request to backend
+      const response = await axios.post('http://localhost:8080/api/users/signup', userData);
+      console.log('User registered:', response.data);
+      alert('Registration successful!');
+    } catch (error) {
+      // Handle errors
+      setErrorMessage(error.response ? error.response.data.message : 'Registration failed!');
+      console.error('Error registering user:', error);
+    }
   };
 
   const handleShowTerms = () => setShowTerms(true);
@@ -34,27 +60,48 @@ const Register = () => {
           {/* Create Account Title */}
           <h2 className="mb-4">Create Account</h2>
 
+          {/* Display error message if any */}
+          {errorMessage && <p className="text-danger">{errorMessage}</p>}
+
+
+          {/* First Name Value */}
           <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formName" className="mb-3">
-              <Form.Label>Name</Form.Label>
+            <Form.Group controlId="formFirstName" className="mb-3">
+              <Form.Label>First Name</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                required
               />
             </Form.Group>
 
-            <Form.Group controlId="formEmail" className="mb-3">
-              <Form.Label>Email address</Form.Label>
+            {/* Last Name Value */}
+            <Form.Group controlId="formLastName" className="mb-3">
+              <Form.Label>Last Name</Form.Label>
               <Form.Control
-                type="email"
-                placeholder="Enter email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                placeholder="Enter name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                required
               />
             </Form.Group>
 
+            {/* Username value */}
+            <Form.Group controlId="formUserName" className="mb-3">
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter name"
+                value={username}
+                onChange={(e) => setUserName(e.target.value)}
+                required
+              />
+            </Form.Group>
+
+            {/* Password */}
             <Form.Group controlId="formPassword" className="mb-3">
               <Form.Label>Password</Form.Label>
               <Form.Control
@@ -62,9 +109,11 @@ const Register = () => {
                 placeholder="Enter password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </Form.Group>
 
+            {/* Confirm Password */}
             <Form.Group controlId="formConfirmPassword" className="mb-3">
               <Form.Label>Confirm Password</Form.Label>
               <Form.Control
@@ -72,6 +121,18 @@ const Register = () => {
                 placeholder="Confirm password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+            </Form.Group>
+
+            {/* Birthday Value */}
+            <Form.Group controlId="formBirthday" className="mb-3">
+              <Form.Label>Birthday</Form.Label>
+              <Form.Control
+                type="date"
+                value={birthday}
+                onChange={(e) => setBirthday(e.target.value)}
+                required
               />
             </Form.Group>
 

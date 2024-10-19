@@ -1,4 +1,4 @@
-package com.bgeconsortium.bge;
+package com.bgeconsortium.bge.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
