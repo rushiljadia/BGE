@@ -6,6 +6,7 @@ import Footer from "./components/Footer.jsx";
 import DrugInfo from "./components/DrugInfo.jsx"
 import Registration from "./components/Registration.jsx";
 import NavBar from "./components/NavBar.jsx";
+import Contact from "./components/Contact.jsx";
 import About from "./components/About.jsx";
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/drug-info" element={<DrugInfo />} />
         <Route path="/registration" element={<Registration />} />
+        <Route path="/contact" element={<Contact />} />
+
       </Routes>
       <Footer />
     </Router>

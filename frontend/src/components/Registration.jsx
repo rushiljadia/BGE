@@ -51,6 +51,7 @@ const Register = () => {
   const handleCloseTerms = () => setShowTerms(false);
 
   return (
+
     <Container fluid className="d-flex justify-content-center align-items-center min-vh-100">
       <Row className="w-100 justify-content-center">
         <Col md={6} lg={4} className="text-center">
@@ -143,44 +144,44 @@ const Register = () => {
                 label={
                   <span>
                     I accept the{" "}
-                    <span
-                      onClick={handleShowTerms}
-                      style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}
-                    >
+                        <span
+                            onClick={handleShowTerms}
+                            style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}
+                        >
                       Terms & Conditions
                     </span>
                   </span>
-                }
-                checked={acceptedTerms}
-                onChange={(e) => setAcceptedTerms(e.target.checked)}
-              />
-            </Form.Group>
+                    }
+                    checked={acceptedTerms}
+                    onChange={(e) => setAcceptedTerms(e.target.checked)}
+                />
+              </Form.Group>
 
-            {/* Sign Up Button */}
-            <Button variant="primary" type="submit" className="w-100">
-              Sign Up
+              {/* Sign Up Button */}
+              <Button variant="primary" type="submit" className="w-100">
+                Sign Up
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+
+        {/* Modal for Terms & Conditions */}
+        <Modal show={showTerms} onHide={handleCloseTerms}>
+          <Modal.Header closeButton>
+            <Modal.Title>Terms & Conditions</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {/* Add terms and conditions */}
+            <p>Welcome to our terms and conditions! Here you can provide detailed terms and conditions for the user to read.</p>
+            <p>Make sure to outline all legal responsibilities, privacy policies, and other necessary user agreements.</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseTerms}>
+              Close
             </Button>
-          </Form>
-        </Col>
-      </Row>
-
-      {/* Modal for Terms & Conditions */}
-      <Modal show={showTerms} onHide={handleCloseTerms}>
-        <Modal.Header closeButton>
-          <Modal.Title>Terms & Conditions</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {/* Add terms and conditions */}
-          <p>Welcome to our terms and conditions! Here you can provide detailed terms and conditions for the user to read.</p>
-          <p>Make sure to outline all legal responsibilities, privacy policies, and other necessary user agreements.</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseTerms}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </Container>
+          </Modal.Footer>
+        </Modal>
+      </Container>
   );
 };
 
