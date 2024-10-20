@@ -51,97 +51,98 @@ const Register = () => {
   const handleCloseTerms = () => setShowTerms(false);
 
   return (
-      <Container fluid className="d-flex justify-content-center align-items-center min-vh-100">
-        <Row className="w-100 justify-content-center">
-          <Col md={6} lg={4} className="text-center">
-            {/* Insert Image Here */}
-            <Image src="../assets/logo-main.png" alt="Account creation image" fluid className="mb-4" />
 
-            {/* Create Account Title */}
-            <h2 className="mb-4">Create Account</h2>
+    <Container fluid className="d-flex justify-content-center align-items-center min-vh-100">
+      <Row className="w-100 justify-content-center">
+        <Col md={6} lg={4} className="text-center">
+          {/* Insert Image Here */}
+          <Image src="../assets/logo-main.png" alt="Account creation image" fluid className="mb-4" />
 
-            {/* Display error message if any */}
-            {errorMessage && <p className="text-danger">{errorMessage}</p>}
+          {/* Create Account Title */}
+          <h2 className="mb-4">Create Account</h2>
+
+          {/* Display error message if any */}
+          {errorMessage && <p className="text-danger">{errorMessage}</p>}
 
 
-            {/* First Name Value */}
-            <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="formFirstName" className="mb-3">
-                <Form.Label>First Name</Form.Label>
-                <Form.Control
-                    type="text"
-                    placeholder="Enter name"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    required
-                />
-              </Form.Group>
+          {/* First Name Value */}
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formFirstName" className="mb-3">
+              <Form.Label>First Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                required
+              />
+            </Form.Group>
 
-              {/* Last Name Value */}
-              <Form.Group controlId="formLastName" className="mb-3">
-                <Form.Label>Last Name</Form.Label>
-                <Form.Control
-                    type="text"
-                    placeholder="Enter name"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    required
-                />
-              </Form.Group>
+            {/* Last Name Value */}
+            <Form.Group controlId="formLastName" className="mb-3">
+              <Form.Label>Last Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                required
+              />
+            </Form.Group>
 
-              {/* Username value */}
-              <Form.Group controlId="formUserName" className="mb-3">
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                    type="text"
-                    placeholder="Enter name"
-                    value={username}
-                    onChange={(e) => setUserName(e.target.value)}
-                    required
-                />
-              </Form.Group>
+            {/* Username value */}
+            <Form.Group controlId="formUserName" className="mb-3">
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter name"
+                value={username}
+                onChange={(e) => setUserName(e.target.value)}
+                required
+              />
+            </Form.Group>
 
-              {/* Password */}
-              <Form.Group controlId="formPassword" className="mb-3">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                    type="password"
-                    placeholder="Enter password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-              </Form.Group>
+            {/* Password */}
+            <Form.Group controlId="formPassword" className="mb-3">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </Form.Group>
 
-              {/* Confirm Password */}
-              <Form.Group controlId="formConfirmPassword" className="mb-3">
-                <Form.Label>Confirm Password</Form.Label>
-                <Form.Control
-                    type="password"
-                    placeholder="Confirm password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    required
-                />
-              </Form.Group>
+            {/* Confirm Password */}
+            <Form.Group controlId="formConfirmPassword" className="mb-3">
+              <Form.Label>Confirm Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Confirm password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+            </Form.Group>
 
-              {/* Birthday Value */}
-              <Form.Group controlId="formBirthday" className="mb-3">
-                <Form.Label>Birthday</Form.Label>
-                <Form.Control
-                    type="date"
-                    value={birthday}
-                    onChange={(e) => setBirthday(e.target.value)}
-                    required
-                />
-              </Form.Group>
+            {/* Birthday Value */}
+            <Form.Group controlId="formBirthday" className="mb-3">
+              <Form.Label>Birthday</Form.Label>
+              <Form.Control
+                type="date"
+                value={birthday}
+                onChange={(e) => setBirthday(e.target.value)}
+                required
+              />
+            </Form.Group>
 
-              {/* Checkbox for Terms & Conditions */}
-              <Form.Group controlId="formTerms" className="mb-4">
-                <Form.Check
-                    type="checkbox"
-                    label={
-                      <span>
+            {/* Checkbox for Terms & Conditions */}
+            <Form.Group controlId="formTerms" className="mb-4">
+              <Form.Check
+                type="checkbox"
+                label={
+                  <span>
                     I accept the{" "}
                         <span
                             onClick={handleShowTerms}
