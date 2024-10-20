@@ -1,0 +1,75 @@
+.user-dashboard {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.dashboard-header h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.medication-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.medication-card {
+    display: flex;
+    align-items: center;
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.med-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.med-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.med-info h4 {
+    margin: 0;
+}
+
+.status-taken {
+    color: green;
+    font-weight: bold;
+}
+
+.status-not-taken {
+    color: red;
+    font-weight: bold;
+}
+
+.pricing-comparison {
+    margin-top: 30px;
+}
+
+.pricing-comparison table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pricing-comparison table th, .pricing-comparison table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.pricing-comparison button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pricing-comparison button:hover {
+    background-color: #45a049;
+}
