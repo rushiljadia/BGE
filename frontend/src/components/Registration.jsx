@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Form, Row, Modal, Image } from "react-bootstrap";
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 const Register = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [username, setUserName] = useState('')
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [birthday, setBirthday] = useState('')
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
-  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Basic Validations
+    // Check to see if password do or do not match
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
@@ -20,7 +25,26 @@ const Register = () => {
     if (!acceptedTerms) {
       alert("You must accept the terms and conditions!");
     }
-    // further validation or API call
+
+    // Prepare user data for API call
+    const userData = {
+      username: username,
+      password: password,
+      firstName: firstName,
+      lastName: lastName,
+      birthday: birthday,
+    }
+
+    try {
+      // Send POST request to backend
+      const response = await axios.post('http://localhost:8080/api/users/signup', userData);
+      console.log('User registered:', response.data);
+      alert('Registration successful!');
+    } catch (error) {
+      // Handle errors
+      setErrorMessage(error.response ? error.response.data.message : 'Registration failed!');
+      console.error('Error registering user:', error);
+    }
   };
 
   const handleShowTerms = () => setShowTerms(true);
@@ -30,34 +54,54 @@ const Register = () => {
       <Container fluid className="d-flex justify-content-center align-items-center min-vh-100">
         <Row className="w-100 justify-content-center">
           <Col md={6} lg={4} className="text-center">
+            {/* Insert Image Here */}
             <Image src="../assets/logo-main.png" alt="Account creation image" fluid className="mb-4" />
 
+            {/* Create Account Title */}
             <h2 className="mb-4">Create Account</h2>
 
+            {/* Display error message if any */}
+            {errorMessage && <p className="text-danger">{errorMessage}</p>}
+
+
+            {/* First Name Value */}
             <Form onSubmit={handleSubmit}>
-              {/* Name Field */}
-              <Form.Group controlId="formName" className="mb-3">
-                <Form.Label>Name</Form.Label>
+              <Form.Group controlId="formFirstName" className="mb-3">
+                <Form.Label>First Name</Form.Label>
                 <Form.Control
                     type="text"
                     placeholder="Enter name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    required
                 />
               </Form.Group>
 
-              {/* Email Field */}
-              <Form.Group controlId="formEmail" className="mb-3">
-                <Form.Label>Email address</Form.Label>
+              {/* Last Name Value */}
+              <Form.Group controlId="formLastName" className="mb-3">
+                <Form.Label>Last Name</Form.Label>
                 <Form.Control
-                    type="email"
-                    placeholder="Enter email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    type="text"
+                    placeholder="Enter name"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    required
                 />
               </Form.Group>
 
-              {/* Password Field */}
+              {/* Username value */}
+              <Form.Group controlId="formUserName" className="mb-3">
+                <Form.Label>Username</Form.Label>
+                <Form.Control
+                    type="text"
+                    placeholder="Enter name"
+                    value={username}
+                    onChange={(e) => setUserName(e.target.value)}
+                    required
+                />
+              </Form.Group>
+
+              {/* Password */}
               <Form.Group controlId="formPassword" className="mb-3">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
@@ -65,10 +109,11 @@ const Register = () => {
                     placeholder="Enter password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    required
                 />
               </Form.Group>
 
-              {/* Confirm Password Field */}
+              {/* Confirm Password */}
               <Form.Group controlId="formConfirmPassword" className="mb-3">
                 <Form.Label>Confirm Password</Form.Label>
                 <Form.Control
@@ -76,10 +121,22 @@ const Register = () => {
                     placeholder="Confirm password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
                 />
               </Form.Group>
 
-              {/* Terms & Conditions Checkbox */}
+              {/* Birthday Value */}
+              <Form.Group controlId="formBirthday" className="mb-3">
+                <Form.Label>Birthday</Form.Label>
+                <Form.Control
+                    type="date"
+                    value={birthday}
+                    onChange={(e) => setBirthday(e.target.value)}
+                    required
+                />
+              </Form.Group>
+
+              {/* Checkbox for Terms & Conditions */}
               <Form.Group controlId="formTerms" className="mb-4">
                 <Form.Check
                     type="checkbox"
@@ -104,17 +161,6 @@ const Register = () => {
                 Sign Up
               </Button>
             </Form>
-
-            {/* "Already have an account?" Text */}
-            <p className="mt-3">
-              Already have an account?{' '}
-              <span
-                  style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}
-                  onClick={() => navigate('/login')}
-              >
-              Login here
-            </span>
-            </p>
           </Col>
         </Row>
 
